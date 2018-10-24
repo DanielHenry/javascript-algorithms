@@ -27,10 +27,14 @@ describe('CountingSort', () => {
     const sorter = new CountingSort({ visitingCallback });
 
     // Detect biggest number in array in prior.
-    const biggestElement = Math.max(...notSortedArr);
+    const biggestElement = notSortedArr.reduce((accumulator, element) => {
+      return element > accumulator ? element : accumulator;
+    }, 0);
 
     // Detect smallest number in array in prior.
-    const smallestElement = Math.min(...notSortedArr);
+    const smallestElement = notSortedArr.reduce((accumulator, element) => {
+      return element < accumulator ? element : accumulator;
+    }, 0);
 
     const sortedArray = sorter.sort(notSortedArr, smallestElement, biggestElement);
 

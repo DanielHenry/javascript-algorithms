@@ -19,7 +19,9 @@ export default class BubbleSort extends Sort {
 
         // Swap elements if they are in wrong order.
         if (this.comparator.lessThan(array[j + 1], array[j])) {
-          [array[j], array[j + 1]] = [array[j + 1], array[j]];
+          const tmp = array[j + 1];
+          array[j + 1] = array[j];
+          array[j] = tmp;
 
           // Register the swap.
           swapped = true;
